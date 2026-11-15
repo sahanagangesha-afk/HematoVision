@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HematoVision – Blood Cell Classification</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>🩸 HematoVision</h1>
+      <p class="sub">Upload a microscope image of a white blood cell and the CNN will classify it as
+        eosinophil, lymphocyte, monocyte or neutrophil.</p>
+    </header>
+
+    <label id="dropzone" class="dropzone" for="file">
+      <input id="file" type="file" accept=".jpg,.jpeg,.png,.bmp,.tif,.tiff" hidden>
+      <span id="dz-text">Click or drag &amp; drop an image here<br><small>JPG, PNG, BMP, TIFF · max 5&nbsp;MB</small></span>
+      <img id="preview" alt="Selected image preview" hidden>
+    </label>
+
+    <button id="predict-btn" type="button" disabled>Classify</button>
+
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <section id="result" class="result" hidden>
+      <div class="label-row">
+        <span class="label" id="res-label"></span>
+        <span class="conf" id="res-conf"></span>
+      </div>
+      <div id="warning" class="warning" hidden>
+        Low confidence – this prediction may be unreliable. Try a clearer, well-focused image.
+      </div>
+      <div id="bars"></div>
+    </section>
+
+    <footer>For educational purposes only – not a medical diagnosis.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
